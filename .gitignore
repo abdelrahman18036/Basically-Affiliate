@@ -1,0 +1,35 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+venv/
+env/
+
+# Ignore database files
+*.sqlite3
+
+# Ignore IDE and code editor files
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+
+# Ignore logs and static files collected during development
+*.log
+/static/
+/media/
+
+# Ignore environment-specific settings
+.env
+
+# Ignore secret settings (you should never include these in version control)
+*.secret_key
+
+# Ignore migration files (managed by Django)
+**/migrations/
+
+# Ignore sensitive configuration files
+config.json
+config.yaml

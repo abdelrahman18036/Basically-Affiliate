@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} My Refels {% endblock title %}
+
+{% block content %}
+    <div class="container">
+        {% if my_ref %}
+        <h1 class="mt-4">My Refals <span class="badge badge-secondary">{{ my_ref|length }}</span></h1>
+        <ul class="list-group mt-3">
+            {% for rec in my_ref %}
+            <li class="list-group-item">{{ rec.user }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="alert alert-info mt-4" role="alert">
+            No Refals
+        </div>
+        {% endif %}
+    </div>
+{% endblock content %}
