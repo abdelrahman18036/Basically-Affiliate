@@ -52,9 +52,3 @@ Step-by-step instructions on how to install and set up your project.
 
 5.  ```bash
         live on 127.0.0.1:8000
-
-### Video Demo
-<video width="640" height="360" controls>
-  <source src="video/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
