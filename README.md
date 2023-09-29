@@ -9,9 +9,7 @@ Simple Django Affiliate
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Project Description
 
@@ -43,10 +41,14 @@ Step-by-step instructions on how to install and set up your project.
    ```bash
     git clone https://github.com/abdelrahman18036/Basically-Affiliate.git
 
-2. cd Basically-Affiliate
+2.  ```bash
+    cd Basically-Affiliate
 
-3. python manage.py migrate
+3.  ```bash
+        python manage.py migrate
 
-4. python manage.py runserver
+4.  ```bash
+        python manage.py runserver
 
-5. live on 127.0.0.1:8000
+5.  ```bash
+        live on 127.0.0.1:8000
