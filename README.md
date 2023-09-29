@@ -39,10 +39,10 @@ Step-by-step instructions on how to install and set up your project.
 
 1. Clone the repository:
    ```bash
-    git clone https://github.com/abdelrahman18036/Basically-Affiliate.git
+        git clone https://github.com/abdelrahman18036/Basically-Affiliate.git
 
 2.  ```bash
-    cd Basically-Affiliate
+        cd Basically-Affiliate
 
 3.  ```bash
         python manage.py migrate
