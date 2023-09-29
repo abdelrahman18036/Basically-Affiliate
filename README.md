@@ -37,8 +37,8 @@ pip install -r requirements.txt
 
 Step-by-step instructions on how to install and set up your project.
 
-1. Clone the repository:
-   ```bash
+ 
+1.  ```bash
         git clone https://github.com/abdelrahman18036/Basically-Affiliate.git
 
 2.  ```bash
