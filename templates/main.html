@@ -6,6 +6,12 @@
     <div class="container mt-5">
         {% if request.user.is_authenticated %}
             <p class="lead">Welcome, {{ request.user }}!</p>
+
+            <form enctype="multipart/form-data" method="post" role="main_view">
+                {% csrf_token %}
+                  <h2>{{ request.user }}! To pay, click on this button <button type="submit" class="btn btn-success" href="{% url 'main_view' %}" data-bind-href="pricing">Payment</button></h2>
+                </form>
+
             <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
         {% else %}
             <a href="{% url 'register_view' %}" class="btn btn-primary">Create Account</a>

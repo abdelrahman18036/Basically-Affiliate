@@ -4,7 +4,7 @@ from .utils import generate_uuid
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, max_length=50)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     code = models.CharField(max_length=50, blank=True)
     reffeled_by = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='reffeled')
     updated = models.DateTimeField(auto_now=True)

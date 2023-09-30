@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -17,9 +17,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SESSION_COOKIE_AGE = 2419200
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=p$h%!v4+sv(j3d$kvr1#!wu(fu%8zxh_p6tzk#&0*%ab7wr9q'
+
+SECRET_KEY = config('SECRET_KEY')
+STRIPE_PUBLIC_KEY_TEST = config('STRIPE_PUBLIC_KEY_TEST')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_WEBHOOK_SECRET_TEST = config('STRIPE_WEBHOOK_SECRET_TEST')
+PRODUCT_PRICE = config('PRODUCT_PRICE')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +44,7 @@ INSTALLED_APPS = [
     'Profiles',
     'crispy_forms',
     'crispy_bootstrap4',
+    'user_payment',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +133,4 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+REDIRECT_DOMAIN = 'http://127.0.0.1:8000'
