@@ -1,177 +1,111 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %} My Refels {% endblock title %}
-
 {% block content %}
-
-    <div class="app-container">
-        <div class="sidebar">
-          <div class="sidebar-header">
-            <div class="app-icon">
-              <img src="{% static 'images/cyberdefender.svg' %}" alt="cyberdefender" style="width: 100%;">
-            </div>
-          </div>
-          <ul class="sidebar-list">
-           
-            <li class="sidebar-list-item active"  >
-              <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
-                <span>Statistics</span>
-              </a>
-            </li>
-          
-          </ul>
-          <div class="account-info">
-            <div class="account-info-picture">
-              <img src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png" alt="Account">
-            </div>
-            <div class="account-info-name">{{request.user}}</div>
-            <button class="account-info-more">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="app-content">
-          <div class="app-content-header">
-            <h1 class="app-content-headerText">Statistics</h1>
-          </div>
-            
-          <div class="content-title" style="padding:5px;    margin-top: 20px;">
-            
-          <div class="pill-wrapper">
+<div class="app-container">
+   <div class="sidebar">
+      <div class="sidebar-header">
+         <div class="app-icon">
+            <img src="{% static 'images/cyberdefender.svg' %}" alt="cyberdefender" style="width: 100%;">
+         </div>
+      </div>
+      <ul class="sidebar-list">
+         <li class="sidebar-list-item active"  >
+            <a href="#">
+               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart">
+                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+                  <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+               </svg>
+               <span>Statistics</span>
+            </a>
+         </li>
+      </ul>
+      <div class="account-info">
+         <div class="account-info-picture">
+            <img src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png" alt="Account">
+         </div>
+         <div class="account-info-name">{{request.user}}</div>
+         <button class="account-info-more">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal">
+               <circle cx="12" cy="12" r="1"/>
+               <circle cx="19" cy="12" r="1"/>
+               <circle cx="5" cy="12" r="1"/>
+            </svg>
+         </button>
+      </div>
+   </div>
+   <div class="app-content">
+      <div class="app-content-header">
+         <h1 class="app-content-headerText">Statistics</h1>
+      </div>
+      <div class="content-title" style="padding:5px;    margin-top: 20px;">
+         <div class="pill-wrapper">
             <div class="pill">
-              <i class="pill__icon fa fa-user"></i>
-          <div class="pill__content">
-                <div class="pill__title">My Refals Users</div>
-                <div class="pill__value">{{ my_ref|length }}</div>        
-              </div>
+               <i class="pill__icon fa fa-user"></i>
+               <div class="pill__content">
+                  <div class="pill__title">My Refals Users</div>
+                  <div class="pill__value">{{ my_ref|length }}</div>
+               </div>
             </div>
-        
             <div class="pill">
-              <i class="pill__icon fa fa-user"></i>
-              <div class="pill__content">
-                <div class="pill__title">Completed Payment</div>
-                <div class="pill__value">{{ referred_users_with_payment|length }}</div>        
-              </div>
+               <i class="pill__icon fa fa-user"></i>
+               <div class="pill__content">
+                  <div class="pill__title">Completed Payment</div>
+                  <div class="pill__value">{{ referred_users_with_payment|length }}</div>
+               </div>
             </div>
-        
             <div class="pill">
-              <i class="pill__icon fa fa-user"></i>
-            <div class="pill__content">
-                <div class="pill__title">Overall Growth</div>
-                <div class="pill__value">{{growth}}%</div>        
-              </div>
-            </div>    
-          </div>
-
-          <div class="row">
+               <i class="pill__icon fa fa-user"></i>
+               <div class="pill__content">
+                  <div class="pill__title">Overall Growth</div>
+                  <div class="pill__value">{{growth}}%</div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
             <div class="col-md-6">
-                <div class="activity-feed">
-                    <h3>My Refals Users</h3>
-                    <ul class="feed">
-                        {% for rec in my_ref %}
-                        <li class="feed__item user">
-                            <div class="user__avatar"><img src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" style="width:36px"></div>
-                            <div class="user__name">{{ rec.user }}</div>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+               <div class="activity-feed">
+                  <h3>My Refals Users</h3>
+                  <ul class="feed">
+                     {% for rec in my_ref %}
+                     <li class="feed__item user">
+                        <div class="user__avatar"><img src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" style="width:36px"></div>
+                        <div class="user__name">{{ rec.user }}</div>
+                     </li>
+                     {% endfor %}
+                  </ul>
+               </div>
             </div>
             <div class="col-md-6">
-                <div class="activity-feed">
-                    <h3>Completed Payment
-                    </h3>
-                    <ul class="feed">
-                        {% for rece in referred_users_with_payment %}
-                        <li class="feed__item user">
-                            <div class="user__avatar"><img src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" style="width:36px"></div>
-                            <div class="user__name">{{ rece.user }}</div>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+               <div class="activity-feed">
+                  <h3>Completed Payment
+                  </h3>
+                  <ul class="feed">
+                     {% for rece in referred_users_with_payment %}
+                     <li class="feed__item user">
+                        <div class="user__avatar"><img src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" style="width:36px"></div>
+                        <div class="user__name">{{ rece.user }}</div>
+                     </li>
+                     {% endfor %}
+                  </ul>
+               </div>
             </div>
-            
-
-
-
-
-            <div class="row">
-              <div class="col-md-6">
-                <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
-
-              </div>
-              <div class="col-md-6">
-                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-
-              </div>
-            </div>
-            <script>
-
-              const xValues = '{{ xValues }}';
-const myRefData = '{{ myRefData }}';
-const referredUsersWithPaymentData = '{{ referredUsersWithPaymentData }}';
-new Chart("myChart", {
-  type: "line",
-  data: {
-    labels: xValues,
-    datasets: [{
-      fill: false,
-      lineTension: 0,
-      backgroundColor: "rgba(0,0,255,1.0)",
-      borderColor: "rgba(0,0,255,0.1)",
-      data: myRefData
-    }]
-  },
-  options: {
-    legend: {display: false},
-    scales: {
-      yAxes: [{ticks: {min: 6, max:16}}],
-    }
-  }
-});
-
-            </script>
-        </div>
-        
-       
-        <div class="container mt-5">
-          <div class="card">
-              <div class="card-body">
+         </div>
+         <div class="container mt-5">
+            <div class="card">
+               <div class="card-body">
                   <h5 class="card-title">Your Referral Link</h5>
                   <p class="card-text">Share this link with your friends:</p>
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="referralLink" value="http://127.0.0.1:8000/{{refelcode}}" readonly>
-                      <div class="input-group-append">
-                          <button class="btn btn-primary" id="copyButton">Copy</button>
-                      </div>
+                     <input type="text" class="form-control" id="referralLink" value="http://127.0.0.1:8000/{{refelcode}}" readonly>
+                     <div class="input-group-append">
+                        <button class="btn btn-primary" id="copyButton">Copy</button>
+                     </div>
                   </div>
-              </div>
-          </div>
-          
+               </div>
+            </div>
+         </div>
       </div>
-      
-
-
-
-
-
-
-        </div>
-          
-        </div>
-        
-      </div>
-
-
-
-
-
-
-
-
-
-    
+   </div>
+</div>
 {% endblock content %}
-
