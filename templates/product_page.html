@@ -1,21 +1,29 @@
 {% extends 'base.html' %}
+
 {% block title %}
 Product Page
 {% endblock title %}
+
 {% block content %}
-
-  <div class="container home_msg">
-    {% if user.is_authenticated %}
-      <form enctype="multipart/form-data" method="post" role="product_page">
-      {% csrf_token %}
-        <h2>Hi {{ user }}! To pay, click on this button <button type="submit" class="btn btn-success" href="{% url 'product_page' %}" data-bind-href="pricing">Payment</button></h2>
-      </form>
-    {% else %}
-      <h2>You're not logged in...</h2><a href="{% url 'login' %}" class="btn btn-secondary">Log in</a>
-
-    {% endif %}
-  </div>
-
-
-
-{% endblock content %} 
+<div class="container mt-5">
+        {% if user.is_authenticated %}
+            <form enctype="multipart/form-data" method="post" role="product_page">
+                {% csrf_token %}
+                <div>
+                    <h2>Welcome, {{ user }}!</h2>
+                    <p class="lead">To make a payment, click on the button below:</p>
+                    <button type="submit" class="btn btn-success" >
+                        <i class="fas fa-shopping-cart"></i> Make Payment
+                    </button>
+                </div>
+            </form>
+        {% else %}
+            <div >
+                <h2>You're not logged in...</h2>
+                <a href="{% url 'login' %}" class="btn btn-secondary">
+                    <i class="fas fa-sign-in-alt"></i> Log in
+                </a>
+            </div>
+        {% endif %}
+        </div>
+{% endblock content %}

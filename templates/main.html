@@ -1,20 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %} Affiliate Program {% endblock title %}
 
 {% block content %}
-    <div class="container mt-5">
+<div class="container mt-5">
         {% if request.user.is_authenticated %}
+
             <p class="lead">Welcome, {{ request.user }}!</p>
-
-            <form enctype="multipart/form-data" method="post" role="main_view">
-                {% csrf_token %}
-                  <h2>{{ request.user }}! To pay, click on this button <button type="submit" class="btn btn-success" href="{% url 'main_view' %}" data-bind-href="pricing">Payment</button></h2>
-                </form>
-
+            <a href="{% url 'my_profile_view' %}" class="btn btn-primary">Dashboard</a>
+            <a href="{% url 'product_page' %}" class="btn btn-primary">Make Fast Payment</a>
             <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
         {% else %}
+            <p class="lead">Hello, There!</p>
             <a href="{% url 'register_view' %}" class="btn btn-primary">Create Account</a>
+            <a href="{% url 'login_view' %}" class="btn btn-success">Login</a>        
         {% endif %}
-    </div>
+</div>  
 {% endblock content %}
+

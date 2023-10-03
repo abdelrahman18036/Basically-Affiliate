@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .view import main_view , register_view
+from django.conf import settings
+from django.conf.urls.static import static
+from user_payment.views import payment_cancelled, payment_successful, product_page, stripe_webhook
+from .view import login_view, main_view , register_view
 from django.contrib.auth.views import LogoutView
 from Profiles.views import my_profile_view
-from user_payment.views import product_page, payment_successful, payment_cancelled, stripe_webhook
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_view, name='main_view'),
     path('register/', register_view, name='register_view'),
+    path('login/', login_view, name='login_view'),
     path('profile/', my_profile_view, name='my_profile_view'),
     path('product_page/', product_page, name='product_page'),
     path('payment_successful/', payment_successful, name='payment_successful'),
@@ -30,5 +34,5 @@ urlpatterns = [
     path('stripe_webhook/', stripe_webhook, name='stripe_webhook'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('<str:code>/', main_view, name='main'),
-
-]
+# Match the root URL with no 'code' parameter
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

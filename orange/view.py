@@ -3,6 +3,7 @@ from Profiles.models import Profile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 
 
 
@@ -18,7 +19,6 @@ def main_view(request, *args, **kwargs):
         expiry_date = request.session.get('session_key').get('_session_expiry')
         print(expiry_date)
     else:
-        print("Session key not found in request session.")
         print(request.session.get_expiry_date())
     return render(request, 'main.html', {})
 
@@ -45,3 +45,20 @@ def register_view(request, *args, **kwargs):
 
 
     return render(request, 'register.html', {'form':form, 'profile_id':profile_id})
+
+
+def login_view(request, *args, **kwargs):
+    form = AuthenticationForm(request, data=request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        print(username)
+        print(password)
+        user = authenticate(username=username, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            return redirect('main_view')
+        else:
+            print("Error")
+    return render(request, 'login.html', {'form':form})

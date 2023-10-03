@@ -34,10 +34,14 @@ def payment_successful(request):
     checkout_session_id = request.GET.get('session_id', None)
     session = stripe.checkout.Session.retrieve(checkout_session_id)
     profile = Profile.objects.get(user=request.user)
-    user_payment = UserPayment.objects.get(app_user=profile)
-    user_payment.stripe_session_id = checkout_session_id
-    user_payment.payment_bool = True
-    user_payment.save()
+    user_payment = UserPayment.objects.create(
+        app_user=profile,
+        stripe_session_id=checkout_session_id,
+        payment_bool=True,
+    )
+
+    profile.payment_sucessful_ref = user_payment
+    profile.save()
     
     return render(request, 'payment_successful.html', {'customer': session.customer})
 
